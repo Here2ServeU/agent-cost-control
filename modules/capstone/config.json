@@ -1,0 +1,12 @@
+{
+  "agent": "invoice-reader",
+  "team": "finance-ops",
+  "model": "sonnet",
+  "step_ceiling": 40,
+  "per_run_usd": 0.15,
+  "per_day_usd": 10.0,
+  "on_breach": "drain",
+  "caps_enabled": true,
+  "loop_detection": true,
+  "checkpoints": true
+}

@@ -1,0 +1,7 @@
+{
+  "id": "invoice-9903",
+  "shape": "stuck",
+  "seed": 3,
+  "note": "The simplest loop: the same action on the same target, forever.",
+  "amount": null
+}

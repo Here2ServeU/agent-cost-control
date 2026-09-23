@@ -1,0 +1,8 @@
+{
+  "id": "invoice-9902",
+  "shape": "bouncing",
+  "seed": 13,
+  "note": "The amount field is unparseable, so the agent parses, validates, fails, and parses again. Forever. This is the input that started the course.",
+  "amount": "one thousand four hundred and twenty dollars only (see attached)",
+  "vendor": "Northwind Supply"
+}
