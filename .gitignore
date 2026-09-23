@@ -1,0 +1,10 @@
+# runtime state; the ledger is written by every run
+modules/capstone/ledger/
+
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+.DS_Store
+~$*.pptx
