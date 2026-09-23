@@ -1,0 +1,55 @@
+# STEP 6 - ALERT ON THE RATE, NOT THE TOTAL.
+#
+# Two rules, two windows, two speeds of response. One alert genuinely
+# cannot do both: fast enough to catch a runaway means waking you for
+# every busy afternoon.
+#
+# MONTHLY_BUDGET below is $300. Change it in one place.
+
+groups:
+  - name: agent-cost
+    rules:
+      - record: agent:cost:rate1h
+        expr: sum(rate(agent_cost_usd_total[1h]))
+
+      - record: agent:cost:rate24h
+        expr: sum(rate(agent_cost_usd_total[24h]))
+
+      # Projected monthly spend from the last hour's pace.
+      - record: agent:cost:projected_monthly_1h
+        expr: agent:cost:rate1h * 60 * 60 * 24 * 30
+
+      - record: agent:cost:projected_monthly_24h
+        expr: agent:cost:rate24h * 60 * 60 * 24 * 30
+
+      # FAST: fires within minutes. Worth waking someone up for.
+      - alert: AgentBurnRateFast
+        expr: agent:cost:projected_monthly_1h > 600      # 2x the $300 budget
+        for: 5m
+        labels: {severity: page, window: 1h}
+        annotations:
+          summary: "Agent burn rate is 2x budget on the last hour"
+          description: >-
+            At the last hour's pace this is ${{ $value | printf "%.0f" }}/month
+            against a $300 budget. The per-run cap will bound it either way;
+            this tells you it is happening.
+
+      # SLOW: fires in hours. Mention it at standup.
+      - alert: AgentBurnRateSlow
+        expr: agent:cost:projected_monthly_24h > 360     # 1.2x the $300 budget
+        for: 2h
+        labels: {severity: ticket, window: 24h}
+        annotations:
+          summary: "Agent spending is drifting above budget"
+          description: >-
+            Twenty-four-hour pace projects ${{ $value | printf "%.0f" }}/month
+            against a $300 budget. Nothing dramatic; it adds up to a bad month.
+
+      # The failed-run tax, watched as a share of spend.
+      - alert: AgentFailedRunTaxHigh
+        expr: >-
+          sum(rate(agent_wasted_usd_total[6h])) / sum(rate(agent_cost_usd_total[6h])) > 0.35
+        for: 1h
+        labels: {severity: ticket}
+        annotations:
+          summary: "More than 35% of agent spend is going to runs that fail"

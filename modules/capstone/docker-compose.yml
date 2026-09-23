@@ -1,0 +1,35 @@
+# The stack, in two containers plus the pushgateway that short-lived
+# agent runs need (a run that lasts four seconds is never scraped).
+#
+#   docker compose up -d
+#   Prometheus  http://localhost:9090
+#   Grafana     http://localhost:3000   (admin / admin)
+
+services:
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: agent-prometheus
+    ports: ["9090:9090"]
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - ./prometheus/rules:/etc/prometheus/rules:ro
+    command:
+      - --config.file=/etc/prometheus/prometheus.yml
+      - --storage.tsdb.retention.time=30d
+
+  pushgateway:
+    image: prom/pushgateway:latest
+    container_name: agent-pushgateway
+    ports: ["9091:9091"]
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: agent-grafana
+    ports: ["3000:3000"]
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: admin
+      GF_AUTH_ANONYMOUS_ENABLED: "true"
+    volumes:
+      - ./grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./grafana/dashboards:/var/lib/grafana/dashboards:ro
+    depends_on: [prometheus]
