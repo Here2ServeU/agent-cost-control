@@ -2,12 +2,40 @@
 
 **Runtime:** ~45 min · 6 sections · **The module where all six mechanisms land on one agent.**
 
-## Slides
+## Install what you need
 
-- [`Agent_Cost_Capstone_Presenter.pptx`](slides/Agent_Cost_Capstone_Presenter.pptx) — presenter copy:
-  hidden iPad reference pages with the finished panels, plus the full script in the notes.
-  **Do not share this one.**
-- [`Agent_Cost_Capstone_Student.pptx`](slides/Agent_Cost_Capstone_Student.pptx) — student copy.
+Python 3.10+ and `prometheus-client` for steps 0 to 5. Step 6 also needs **Docker Desktop**
+(Prometheus, the Pushgateway and Grafana run in containers). Full instructions for macOS,
+Windows and Linux are in the [course README](../../README.md#install-the-tools).
+
+```bash
+# macOS
+brew install python git
+brew install --cask docker            # open Docker Desktop once to finish setup
+```
+
+```powershell
+# Windows (PowerShell)
+winget install Python.Python.3.12
+winget install Docker.DockerDesktop   # restart when it asks
+```
+
+```bash
+# Linux (Ubuntu/Debian)
+sudo apt install -y python3 python3-venv git
+curl -fsSL https://get.docker.com | sudo sh
+```
+
+Then, from this folder:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate             # Windows: .venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+```
+
+`timeout` in step 0 is a Linux command. On macOS use `gtimeout` (from
+`brew install coreutils`), or just press Ctrl-C after twenty seconds.
 
 ## The code
 

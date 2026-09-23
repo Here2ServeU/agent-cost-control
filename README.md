@@ -15,6 +15,8 @@ pip install -r requirements.txt
 python3 verify.py
 ```
 
+New machine? Start with [Install the tools](#install-the-tools) below.
+
 ---
 
 ## The course
@@ -29,8 +31,131 @@ python3 verify.py
 | **6** | [Operating It](modules/module-6/README.md) | Four panels, two alerts, routing, caching, a weekly habit | ~50 min |
 | **★** | [**The Capstone**](modules/capstone/README.md) | All six on one agent, each one proven by running it | ~45 min |
 
-Each module folder holds two decks and, from module 2 on, the finished versions of the
-diagrams drawn live during the session.
+Each module folder holds a README, a `scripts/` folder with everything that module's
+hands-on section runs, and, from module 2 on, the finished versions of the diagrams drawn
+live during the session (`panels/`).
+
+---
+
+## Scripts in every module
+
+Every module has a `scripts/` folder that runs on its own. It holds the course agent as it
+stands at the end of that module, plus the helper scripts the module's build section uses,
+so you can check your own work against a version that works.
+
+| Module | Folder | What you run |
+|---|---|---|
+| 1 | [`module-1/scripts`](modules/module-1/scripts) | `run_agent.py` (no instrumentation), `price_run.py` |
+| 2 | [`module-2/scripts`](modules/module-2/scripts) | `run_agent.py` (the envelope), `metrics_server.py` |
+| 3 | [`module-3/scripts`](modules/module-3/scripts) | `run_agent.py` (caps), `kill_switch.py` |
+| 4 | [`module-4/scripts`](modules/module-4/scripts) | `run_agent.py` (step limit, loops, checkpoints), `failed_run_tax.py` |
+| 5 | [`module-5/scripts`](modules/module-5/scripts) | `SUCCESS.md`, `run_agent.py`, `cost_per_success.py`, Prometheus |
+| 6 | [`module-6/scripts`](modules/module-6/scripts) | `run_agent.py` (routing), `compare_runs.py`, Prometheus + Grafana |
+| ★ | [`capstone`](modules/capstone) | `verify.py`, `report.py`, the full stack |
+
+Like the capstone, nothing calls a paid API. The model is simulated, so every script runs
+offline, costs nothing and prints the same numbers every time. You do not need an API key.
+
+---
+
+## Install the tools
+
+You need four things for the whole course. Install them once. Each module's README lists
+only what that module adds.
+
+| Tool | Why | Needed from |
+|---|---|---|
+| **Python 3.10+** | every script in the course | module 1 |
+| **Git** | to clone this repo | module 1 |
+| **VS Code** (or any editor and terminal) | to read the code and run commands | module 1 |
+| **Docker Desktop** | to run Prometheus and Grafana | module 5 (optional), module 6, capstone |
+
+`curl` is also used from module 2 on. It is already installed on macOS, Linux and Windows
+10/11. In Windows PowerShell, type `curl.exe`, not `curl`: plain `curl` there is a
+different command with the same name.
+
+If you would rather watch than read, these two short videos go from a blank machine to Git,
+Python and VS Code installed:
+
+- **macOS**: https://youtu.be/8ZIiXg4XOY0
+- **Windows**: https://youtu.be/3e2-GRBibWc
+
+### macOS
+
+Install [Homebrew](https://brew.sh) first if you do not have it, then:
+
+```bash
+brew install python git
+brew install --cask visual-studio-code
+brew install --cask docker          # Docker Desktop; open it once from Applications to finish setup
+```
+
+### Windows 10/11 (PowerShell)
+
+`winget` is built into Windows 11 and recent Windows 10:
+
+```powershell
+winget install Python.Python.3.12
+winget install Git.Git
+winget install Microsoft.VisualStudioCode
+winget install Docker.DockerDesktop   # restart when it asks; it turns on WSL 2 for you
+```
+
+Close and reopen PowerShell afterwards so it picks up the new commands. On Windows the
+Python command is `py`, so wherever this course says `python3`, type `py`.
+
+If PowerShell refuses to activate a virtual environment ("running scripts is disabled"),
+run this once:
+
+```powershell
+Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
+```
+
+### Linux (Ubuntu/Debian)
+
+```bash
+sudo apt update
+sudo apt install -y python3 python3-venv python3-pip git curl
+sudo snap install code --classic                  # VS Code
+curl -fsSL https://get.docker.com | sudo sh       # Docker Engine and the compose plugin
+sudo usermod -aG docker "$USER"                   # then log out and back in
+```
+
+### Check it worked
+
+```bash
+python3 --version          # 3.10 or newer   (Windows: py --version)
+git --version
+code --version
+docker --version           # modules 5-6 and the capstone
+docker compose version
+```
+
+### Get the course and set up Python
+
+```bash
+git clone https://github.com/Here2ServeU/agent-cost-control
+cd agent-cost-control
+python3 -m venv .venv
+source .venv/bin/activate                 # Windows: .venv\Scripts\Activate.ps1
+pip install prometheus-client             # modules 2 to 6 and the capstone
+```
+
+A virtual environment is a private box of Python packages for this project only. Your
+prompt starts with `(.venv)` while you are inside it; run `deactivate` to step out.
+Activate it again each time you open a new terminal.
+
+Then open the module you are on and follow its README. Every module's commands are run
+from inside that module's `scripts/` folder.
+
+### Official pages, if you prefer to read
+
+- Python: https://www.python.org/downloads
+- Git: https://git-scm.com/downloads
+- VS Code: https://code.visualstudio.com/download
+- Docker Desktop: https://docs.docker.com/desktop
+- Python virtual environments: https://docs.python.org/3/library/venv.html
+- Grafana with Prometheus: https://grafana.com/docs/grafana/latest/fundamentals
 
 ---
 
@@ -79,25 +204,6 @@ has to watch is the deliverable.
 
 The whole safety layer is under four hundred lines. It is not hard. It is just never the
 thing anybody does first, because it is not the demo.
-
----
-
-## Two decks per module
-
-- **Presenter** — hidden reference pages for the segments drawn live on the iPad, with the
-  finished panel rendered beside the drawing steps, plus the full script in the speaker
-  notes. These are not for students.
-- **Student** — the same session with the hidden pages, the production marks and the notes
-  stripped out.
-
----
-
-## Before you start
-
-Git, Python 3.10+, VS Code, and Docker Desktop for the last two sessions.
-
-- **macOS** — https://youtu.be/8ZIiXg4XOY0
-- **Windows** — https://youtu.be/3e2-GRBibWc
 
 ---
 

@@ -1,0 +1,8 @@
+{
+  "id": "invoice-9902",
+  "shape": "bouncing",
+  "seed": 13,
+  "note": "The amount cannot be parsed, so the agent parses, validates, fails, and parses again. Forever. This is the record from the 3am runaway.",
+  "amount": "one thousand four hundred and twenty dollars only (see attached)",
+  "vendor": "Northwind Supply"
+}

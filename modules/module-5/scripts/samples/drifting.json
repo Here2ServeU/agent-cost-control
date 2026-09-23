@@ -1,0 +1,8 @@
+{
+  "id": "invoice-9904",
+  "shape": "drifting",
+  "seed": 21,
+  "note": "Never repeats itself and never finishes either. Nothing looks wrong, which is what makes it expensive. The loop detector cannot see it; the step ceiling catches it.",
+  "amount": "1420.00",
+  "vendor": "Northwind Supply"
+}

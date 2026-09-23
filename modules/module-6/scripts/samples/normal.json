@@ -1,0 +1,8 @@
+{
+  "id": "invoice-4471",
+  "shape": "converging",
+  "seed": 7,
+  "note": "A normal invoice. Finishes in six calls. This is the control.",
+  "amount": "1420.00",
+  "vendor": "Northwind Supply"
+}

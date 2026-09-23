@@ -1,0 +1,10 @@
+{
+  "id": "invoice-5120",
+  "shape": "flaky",
+  "seed": 11,
+  "fail_at_step": 4,
+  "fail_times": 2,
+  "note": "A good invoice behind a flaky upstream: step 4 times out on the first two attempts, then works.",
+  "amount": "2310.50",
+  "vendor": "Contoso Freight"
+}

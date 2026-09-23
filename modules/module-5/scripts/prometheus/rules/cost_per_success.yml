@@ -1,0 +1,34 @@
+# MODULE 5 - COST PER SUCCESSFUL TASK, AS A RECORDING RULE AND AN ALERT.
+#
+# The recording rule computes the number on a schedule so a dashboard does
+# not recompute it on every refresh. It is the same division as
+# cost_per_success.py: ALL spend on top, successful runs underneath.
+
+groups:
+  - name: cost-per-success
+    rules:
+      - record: agent:cost_per_success_usd:7d
+        expr: >-
+          sum(increase(agent_cost_usd_total[7d]))
+          /
+          sum(increase(agent_runs_total{result="success"}[7d]))
+
+      - record: agent:cost_per_success_usd:1h
+        expr: >-
+          sum(increase(agent_cost_usd_total[1h]))
+          /
+          sum(increase(agent_runs_total{result="success"}[1h]))
+
+      # Alert on the RATIO, not on spend. This is the alert that catches
+      # quality problems disguised as cost problems: spend can fall while
+      # this rises. Pick the threshold from your own data - roughly 1.5x
+      # your normal cost per success. $0.20 is 1.5x the course agent's.
+      - alert: AgentCostPerSuccessHigh
+        expr: agent:cost_per_success_usd:1h > 0.20
+        for: 10m
+        labels: {severity: ticket}
+        annotations:
+          summary: "Each successful task is costing more than it should"
+          description: >-
+            Cost per successful task is ${{ $value | printf "%.3f" }} over the last hour,
+            above the $0.20 threshold. Check the failure rate before the spend.

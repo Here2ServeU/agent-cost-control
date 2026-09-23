@@ -1,0 +1,94 @@
+{
+  "title": "Agent Cost: Four Panels",
+  "uid": "agent-cost-four",
+  "tags": ["agent", "cost"],
+  "timezone": "browser",
+  "schemaVersion": 39,
+  "refresh": "30s",
+  "time": { "from": "now-24h", "to": "now" },
+  "description": "Four panels, not fourteen. Each one is titled with the question somebody asks out loud, not with the metric name.",
+  "panels": [
+    {
+      "id": 1,
+      "type": "timeseries",
+      "title": "What are we spending?",
+      "description": "Cost per hour. Rate gives spend per second; times 3600 is per hour.",
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 0 },
+      "fieldConfig": {
+        "defaults": { "unit": "currencyUSD", "custom": { "fillOpacity": 10, "lineWidth": 2 } },
+        "overrides": []
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "sum(rate(agent_cost_usd_total[1h])) * 3600",
+          "legendFormat": "$ / hour"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "type": "timeseries",
+      "title": "What is it buying us?",
+      "description": "Cost per successful task. All spend on the top, only successes on the bottom, same window on both.",
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 0 },
+      "fieldConfig": {
+        "defaults": { "unit": "currencyUSD", "custom": { "fillOpacity": 10, "lineWidth": 2 } },
+        "overrides": []
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "sum(increase(agent_cost_usd_total[24h])) / sum(increase(agent_runs_total{result=\"success\"}[24h]))",
+          "legendFormat": "$ per successful task"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "type": "barchart",
+      "title": "Who is spending it?",
+      "description": "Cost by team, this month. So the bill has somewhere to go.",
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 8 },
+      "fieldConfig": { "defaults": { "unit": "currencyUSD" }, "overrides": [] },
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "sum by (team) (increase(agent_cost_usd_total[30d]))",
+          "legendFormat": "{{team}}"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "type": "timeseries",
+      "title": "How much is wasted?",
+      "description": "The failed-run tax: the share of spend that went to runs which did not succeed.",
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 8 },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percentunit",
+          "max": 1,
+          "min": 0,
+          "custom": { "fillOpacity": 10, "lineWidth": 2 },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "orange", "value": 0.2 },
+              { "color": "red", "value": 0.35 }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "sum(rate(agent_wasted_usd_total[6h])) / sum(rate(agent_cost_usd_total[6h]))",
+          "legendFormat": "share of spend wasted"
+        }
+      ]
+    }
+  ]
+}

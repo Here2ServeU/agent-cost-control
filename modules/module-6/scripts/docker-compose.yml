@@ -1,0 +1,35 @@
+# Prometheus and Grafana, reading the /metrics page that metrics_server.py
+# serves on your machine. Needs Docker Desktop (or Docker Engine on Linux).
+#
+#   python3 metrics_server.py &
+#   docker compose up -d prometheus grafana
+#   Prometheus  http://localhost:9090
+#   Grafana     http://localhost:3000     (admin / admin; the four panels are already there)
+#
+#   docker compose down        when you are finished for the day
+
+services:
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: module6-prometheus
+    ports: ["9090:9090"]
+    extra_hosts:
+      - "host.docker.internal:host-gateway"   # lets Linux reach your machine too
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - ./prometheus/rules:/etc/prometheus/rules:ro
+    command:
+      - --config.file=/etc/prometheus/prometheus.yml
+      - --storage.tsdb.retention.time=30d
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: module6-grafana
+    ports: ["3000:3000"]
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: admin
+      GF_AUTH_ANONYMOUS_ENABLED: "true"
+    volumes:
+      - ./grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./grafana/dashboards:/var/lib/grafana/dashboards:ro
+    depends_on: [prometheus]

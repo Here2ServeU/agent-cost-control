@@ -1,0 +1,73 @@
+# The module scripts, in CI.
+#
+# Every module's scripts/ folder is the version learners check their own
+# work against, so it has to keep running. AGENT_PACE=0 skips the pretend
+# model latency; everything else runs exactly as the READMEs say.
+
+name: modules
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+env:
+  AGENT_PACE: "0"
+
+jobs:
+  scripts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install prometheus-client
+
+      - name: Module 1
+        working-directory: modules/module-1/scripts
+        run: |
+          python3 run_agent.py --input samples/normal.json --verbose | python3 price_run.py
+          python3 run_agent.py --input samples/malformed.json --verbose --max-seconds 2 \
+            | python3 price_run.py --seconds 2 --hours 9.5
+
+      - name: Module 2
+        working-directory: modules/module-2/scripts
+        run: |
+          python3 metrics_server.py > /dev/null 2>&1 &
+          sleep 2
+          python3 run_agent.py --input samples/normal.json
+          curl -sf localhost:8000/metrics | grep agent_cost_usd_total
+
+      - name: Module 3
+        working-directory: modules/module-3/scripts
+        run: |
+          RUN_BUDGET_USD=0.02 python3 run_agent.py --input samples/normal.json | grep CAPPED
+          RUN_BUDGET_USD=0.50 python3 run_agent.py --input samples/malformed.json --max-seconds 60 | grep CAPPED
+          AGENT_ENABLED=false python3 run_agent.py --input samples/normal.json | grep REFUSED
+
+      - name: Module 4
+        working-directory: modules/module-4/scripts
+        run: |
+          python3 run_agent.py --input samples/loop.json | grep LOOPED
+          python3 run_agent.py --input samples/drifting.json | grep CEILING
+          python3 run_agent.py --input samples/normal.json --run-id ci --stop-after 3 || true
+          python3 run_agent.py --input samples/normal.json --run-id ci | grep "not re-paid"
+          CHECKPOINTS=on python3 run_agent.py --input samples/flaky.json --retries 3
+          python3 failed_run_tax.py --since 1d
+
+      - name: Module 5
+        working-directory: modules/module-5/scripts
+        run: |
+          python3 run_agent.py --input samples/normal.json
+          python3 run_agent.py --input samples/incomplete.json | grep FAILURE
+          python3 cost_per_success.py --since 1d --compare-previous
+
+      - name: Module 6
+        working-directory: modules/module-6/scripts
+        run: |
+          python3 run_agent.py --input samples/normal.json --repeat 5 --batch baseline --quiet
+          python3 run_agent.py --input samples/normal.json --repeat 5 --batch routed --route read --quiet
+          python3 compare_runs.py --before baseline --after routed
+          python3 run_agent.py --input samples/malformed.json | grep looped -i
