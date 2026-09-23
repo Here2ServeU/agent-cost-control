@@ -1,0 +1,30 @@
+# The capstone check, in CI.
+#
+# Safety layers rot quietly: somebody refactors the runner, the checkpoint
+# stops being written after every step, and nothing fails until the night it
+# matters. This is the thing that keeps all six true.
+
+name: capstone
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: modules/capstone
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - name: Six steps, six proofs
+        run: python3 verify.py
+      - name: The arithmetic still runs
+        run: python3 report.py
