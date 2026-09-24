@@ -2,7 +2,7 @@
 
 Four dashboard panels, two alerts, model routing, caching, and the fifteen-minute weekly habit.
 
-**Runtime:** ~50 min · 6 sections
+**Sections:** 6
 
 ## What this module covers
 

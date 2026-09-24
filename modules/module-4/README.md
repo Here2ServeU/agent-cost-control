@@ -2,7 +2,7 @@
 
 Step limits, the three loop shapes, checkpoints, and the failed-run tax.
 
-**Runtime:** ~50 min · 6 sections
+**Sections:** 6
 
 ## What this module covers
 

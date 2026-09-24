@@ -2,7 +2,7 @@
 
 The usage block, the envelope that captures it, and the four labels that make it answerable.
 
-**Runtime:** ~50 min · 6 sections
+**Sections:** 6
 
 ## What this module covers
 

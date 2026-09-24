@@ -2,7 +2,7 @@
 
 The only number that can tell you a change made things worse while spending less.
 
-**Runtime:** ~50 min · 6 sections
+**Sections:** 6
 
 ## What this module covers
 

@@ -2,7 +2,7 @@
 
 Per-run and per-day caps, the behaviour you choose at the edge, and draining instead of killing.
 
-**Runtime:** ~50 min · 6 sections
+**Sections:** 6
 
 ## What this module covers
 

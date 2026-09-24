@@ -2,7 +2,7 @@
 
 Why an agent's bill behaves unlike any other line on your cloud invoice, and why the dashboard stayed green all night.
 
-**Runtime:** ~45 min · 6 sections
+**Sections:** 6
 
 ## What this module covers
 

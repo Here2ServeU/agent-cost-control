@@ -1,6 +1,6 @@
 # The Capstone: Safe to Leave Running Overnight
 
-**Runtime:** ~45 min · 6 sections · **The module where all six mechanisms land on one agent.**
+**Sections:** 6 · **The module where all six mechanisms land on one agent.**
 
 ## Install what you need
 
