@@ -1,0 +1,21 @@
+# Everything the agents write at runtime
+runs/
+.backup/
+
+# Saved --verbose output from the Module 1 lab
+normal.txt
+loop.txt
+
+# Secrets
+.env
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
