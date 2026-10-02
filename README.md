@@ -77,8 +77,24 @@ different command with the same name.
 If you would rather watch than read, these two short videos go from a blank machine to Git,
 Python and VS Code installed:
 
-- **macOS**: https://youtu.be/8ZIiXg4XOY0
-- **Windows**: https://youtu.be/3e2-GRBibWc
+<table>
+  <tr>
+    <th>macOS</th>
+    <th>Windows</th>
+  </tr>
+  <tr>
+    <td>
+      <a href="https://youtu.be/8ZIiXg4XOY0">
+        <img src="https://img.youtube.com/vi/8ZIiXg4XOY0/hqdefault.jpg" alt="Install Git, Python and VS Code on macOS" width="360">
+      </a>
+    </td>
+    <td>
+      <a href="https://youtu.be/3e2-GRBibWc">
+        <img src="https://img.youtube.com/vi/3e2-GRBibWc/hqdefault.jpg" alt="Install Git, Python and VS Code on Windows" width="360">
+      </a>
+    </td>
+  </tr>
+</table>
 
 ### macOS
 
