@@ -37,7 +37,7 @@ sudo apt install -y python3 git
 
 Check with `python3 --version` (Windows: `py --version`) and `git --version`.
 
-Videos: [macOS](https://youtu.be/8ZIiXg4XOY0) · [Windows](https://youtu.be/3e2-GRBibWc)
+Videos: [macOS](https://youtu.be/8ZIiXg4XOY0) · [Windows](https://youtu.be/f091sbQSv7I)
 
 ## Scripts
 

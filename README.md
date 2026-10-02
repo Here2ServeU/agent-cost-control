@@ -89,8 +89,8 @@ Python and VS Code installed:
       </a>
     </td>
     <td>
-      <a href="https://youtu.be/3e2-GRBibWc">
-        <img src="https://img.youtube.com/vi/3e2-GRBibWc/hqdefault.jpg" alt="Install Git, Python and VS Code on Windows" width="360">
+      <a href="https://youtu.be/f091sbQSv7I">
+        <img src="https://img.youtube.com/vi/f091sbQSv7I/hqdefault.jpg" alt="Install Git, Python and VS Code on Windows" width="360">
       </a>
     </td>
   </tr>
