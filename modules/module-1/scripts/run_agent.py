@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""MODULE 1 - THE AGENT YOU START WITH.
+"""MODULE 1: THE AGENT YOU START WITH.
 
 It has no cost accounting, no cap, no loop detection, no checkpoints and
 no definition of success. It is the state most agents are actually in.

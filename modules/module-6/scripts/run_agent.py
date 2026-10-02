@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""MODULE 6 - OPERATING IT.
+"""MODULE 6: OPERATING IT.
 
 The finished agent: everything from modules 2 to 5, plus model routing.
 

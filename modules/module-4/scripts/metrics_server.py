@@ -7,7 +7,7 @@
 Each run of the agent is a short process; a page served by it would
 vanish when the run ends. So the agent writes its receipts to the ledger
 and this small server turns them into counters on every request. Run the
-agent again and the numbers grow rather than reset - which is exactly
+agent again and the numbers grow rather than reset; that is exactly
 what a counter is for, and why you can measure any window you like later.
 
 Counters, and the labels they carry:
@@ -23,7 +23,7 @@ cardinality bomb; it lives in the ledger instead.
 
 Every counter starts at zero for the agent below, before its first run.
 Prometheus's increase() and rate() only count growth it has seen, so a
-series that first appears already at 3 would count as 0 - and cost per
+series that first appears already at 3 would count as 0, and cost per
 success would come out as NaN. Initialise your counters to zero.
 """
 from __future__ import annotations

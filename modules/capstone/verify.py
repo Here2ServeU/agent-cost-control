@@ -5,7 +5,7 @@
 
 Six steps, six proofs. Each one runs the agent for real and asserts on
 what came back; none of them trust a comment in a file. When all six
-pass, the agent is safe to leave running overnight - not because
+pass, the agent is safe to leave running overnight; not because
 someone says so, but because the thing that would have hurt you was
 tried and stopped.
 """

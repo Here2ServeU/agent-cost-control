@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""MODULE 2 - MAKING COST VISIBLE.
+"""MODULE 2: MAKING COST VISIBLE.
 
 The same agent as module 1, with one thing added: an envelope around the
 model call that keeps the receipt. The agent's own logic is untouched,
-and nothing is stopped yet - you cannot sensibly choose a limit until
+and nothing is stopped yet; you cannot sensibly choose a limit until
 you can see what normal looks like.
 
 The four stages of the build, all in this file:
@@ -78,7 +78,7 @@ def main() -> int:
 
     task = json.loads(Path(a.input).read_text())
     client = SimulatedModel(task)
-    run_id = uuid.uuid4().hex[:8]       # once, at the start of the run - not inside the envelope
+    run_id = uuid.uuid4().hex[:8]       # once, at the start of the run; not inside the envelope
     result = "unknown"                  # module 5 sets this properly
     started, spent, step = time.time(), 0.0, 0
 

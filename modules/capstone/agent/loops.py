@@ -1,4 +1,4 @@
-"""STEP 3 - DETECT THE LOOP BEFORE THE CAP IS REACHED.
+"""STEP 3: DETECT THE LOOP BEFORE THE CAP IS REACHED.
 
 The cap is the seatbelt; it works, and it costs you the whole budget to
 use. Loop detection is the thing that stops the car before the crash,

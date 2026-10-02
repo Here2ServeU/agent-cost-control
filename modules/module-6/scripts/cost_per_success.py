@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""MODULE 5 - COST PER SUCCESSFUL TASK, INCLUDING THE FAILURES.
+"""MODULE 5: COST PER SUCCESSFUL TASK, INCLUDING THE FAILURES.
 
     python3 cost_per_success.py --since 7d
     python3 cost_per_success.py --since 7d --compare-previous
@@ -10,7 +10,7 @@ make every success more expensive. That is the whole idea, and it is
 the only number that can tell you a change made things worse while
 spending less money.
 
-Prints all three numbers - spend, successes, and the result - not just
+Prints all three numbers: spend, successes, and the result; not just
 the answer, and the definition of success with them, every time.
 """
 from __future__ import annotations

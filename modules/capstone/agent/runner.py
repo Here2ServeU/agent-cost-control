@@ -20,7 +20,7 @@ from .loops import LoopDetector
 from .metrics import Metrics
 from .pricing import cost_usd
 
-# STEP 5 - the definition of success, written down, in code, once.
+# STEP 5: the definition of success, written down, in code, once.
 # "It passed a check": the run finished AND produced the field the task
 # asked for. Not "it did not crash" (too generous) and not "a human
 # accepted it" (true, but you cannot run it a hundred times a day).

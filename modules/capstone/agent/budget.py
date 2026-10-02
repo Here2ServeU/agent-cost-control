@@ -1,4 +1,4 @@
-"""STEP 2 - CAP IT. Per run, per day, and say what happens at the edge.
+"""STEP 2: CAP IT. Per run, per day, and say what happens at the edge.
 
 A cap without a chosen behaviour is not a cap; it is a surprise. There
 are three honest answers and you pick one on purpose:

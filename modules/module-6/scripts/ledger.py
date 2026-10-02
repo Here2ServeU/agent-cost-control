@@ -4,7 +4,7 @@
   ledger/runs.jsonl    one line per run          (how it ended, and what it cost)
 
 Prometheus answers "what is happening right now". These files answer
-"what happened, exactly, and what did it cost" - which is the question
+"what happened, exactly, and what did it cost"; that is the question
 you get asked in a meeting three weeks later. The run id lives here,
 where it costs nothing, and never on a Prometheus label.
 

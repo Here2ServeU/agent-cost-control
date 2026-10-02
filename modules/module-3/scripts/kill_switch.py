@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""MODULE 3 - THE SWITCH ANYONE ON THE TEAM CAN FLIP.
+"""MODULE 3: THE SWITCH ANYONE ON THE TEAM CAN FLIP.
 
     python3 kill_switch.py off       # refuse new runs; in-flight runs finish (draining)
     python3 kill_switch.py on        # accept work again

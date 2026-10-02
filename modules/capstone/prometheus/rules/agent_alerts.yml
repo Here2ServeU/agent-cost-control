@@ -1,4 +1,4 @@
-# STEP 6 - ALERT ON THE RATE, NOT THE TOTAL.
+# STEP 6: ALERT ON THE RATE, NOT THE TOTAL.
 #
 # Two rules, two windows, two speeds of response. One alert genuinely
 # cannot do both: fast enough to catch a runaway means waking you for

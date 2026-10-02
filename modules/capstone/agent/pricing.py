@@ -1,4 +1,4 @@
-"""STEP 1a - turning tokens into dollars.
+"""STEP 1a: turning tokens into dollars.
 
 Prices are per one million tokens, in US dollars. They change; this is
 one file so that when they change you edit one file. Input and output

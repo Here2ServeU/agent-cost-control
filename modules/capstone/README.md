@@ -137,9 +137,9 @@ you three or four steps.
 
 Three shapes, all of them just "not making progress":
 
-- **stuck** — the same action on the same target, again and again
-- **bouncing** — A, B, A, B; each one undoing the other
-- **drifting** — never repeats, never converges, new field every time
+- **stuck**: the same action on the same target, again and again
+- **bouncing**: A, B, A, B; each one undoing the other
+- **drifting**: never repeats, never converges, new field every time
 
 ```bash
 python3 run_agent.py --input samples/malformed.json          # caught, ~6 steps
@@ -164,7 +164,7 @@ tells you *why* it stopped.
 
 Without this, every safety mechanism you just built has a price: each
 time a cap fires, you throw away the work that already succeeded and pay
-for it again on the retry. With it, stopping is cheap — which is what
+for it again on the retry. With it, stopping is cheap; that is what
 makes you willing to set the cap tight enough to matter.
 
 ```bash
@@ -172,7 +172,7 @@ python3 run_agent.py --input samples/good.json --step-ceiling 3   # dies partway
 python3 run_agent.py --input samples/good.json --resume           # picks up
 ```
 
-The resumed run prints `not re-paid: $0.0291` — the finished work it did
+The resumed run prints `not re-paid: $0.0291`: the finished work it did
 not buy twice.
 
 Write after every completed step, not at the end. A checkpoint written
@@ -222,8 +222,8 @@ counted, and the definition travels with the number.
 
 Two rules, two windows, two speeds of response:
 
-- **fast**, one-hour window, fires in minutes — worth waking someone for
-- **slow**, twenty-four-hour window, fires in hours — mention it at standup
+- **fast**, one-hour window, fires in minutes; worth waking someone for
+- **slow**, twenty-four-hour window, fires in hours; mention it at standup
 
 One alert cannot do both. Fast enough to catch a runaway means waking
 you for every busy afternoon.
@@ -235,7 +235,7 @@ python3 run_agent.py --input samples/malformed.json --no-caps --no-loop-detect \
 ```
 
 Then Prometheus on **:9090**, Grafana on **:3000** (admin / admin), where
-four panels are already provisioned — each titled with the question
+four panels are already provisioned; each is titled with the question
 somebody asks out loud, not with the metric name.
 
 Because the caps from step 2 are still there in normal operation, this
@@ -244,7 +244,7 @@ not anyone answers the page. **The cap is the seatbelt; the alert is the
 dashboard light.**
 
 **Proof:** a real runaway projects **$9,145/month** against a $300 budget
-at a realistic pace — well past the fast rule's threshold.
+at a realistic pace: well past the fast rule's threshold.
 
 ---
 
@@ -290,7 +290,7 @@ grafana/dashboards/   step 6   four panels, not fourteen
 Read `agent/runner.py` top to bottom. Every mechanism in this course
 appears exactly once, in the order it has to fire: record the step, save
 the checkpoint, check for a loop, then check the cap. That order is not
-an accident — you want the cost of the step that killed you, and you want
+an accident; you want the cost of the step that killed you, and you want
 the cheap stop to fire before the expensive one.
 
 ---

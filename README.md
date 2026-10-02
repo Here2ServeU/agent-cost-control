@@ -215,7 +215,7 @@ deterministic. Swapping in a real client touches one class.
 
 Each one is close to useless alone. Instrumentation with no cap means watching the money
 leave in high resolution. A cap with no checkpointing means every stop throws away work.
-They only work together, and together they are boring — which is the goal. An agent nobody
+They only work together, and together they are boring; that is the goal. An agent nobody
 has to watch is the deliverable.
 
 The whole safety layer is under four hundred lines. It is not hard. It is just never the
@@ -232,7 +232,7 @@ before you report a number rather than in a meeting.
 
 None of those are hard in advance. All of them are hard at three in the morning.
 
-That is what cost control actually is. Not cleverness — deciding early, writing it down,
+That is what cost control actually is. Not cleverness: deciding early, writing it down,
 and letting a machine enforce it while you sleep.
 
 ---

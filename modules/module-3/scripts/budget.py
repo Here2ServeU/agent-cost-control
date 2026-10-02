@@ -1,4 +1,4 @@
-"""MODULE 3 - THE CAPS AND THE SWITCH.
+"""MODULE 3: THE CAPS AND THE SWITCH.
 
 Per run and per day, and a behaviour at the edge chosen on purpose.
 A cap without a chosen behaviour is not a cap; it is a surprise.

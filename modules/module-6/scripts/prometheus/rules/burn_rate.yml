@@ -1,4 +1,4 @@
-# MODULE 6 - ALERT ON THE RATE, NOT THE TOTAL.
+# MODULE 6: ALERT ON THE RATE, NOT THE TOTAL.
 #
 # Two rules, two windows, two speeds of response. One alert cannot do both:
 # fast enough to catch a runaway means waking you for every busy afternoon.

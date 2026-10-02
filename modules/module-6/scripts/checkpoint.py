@@ -1,4 +1,4 @@
-"""MODULE 4 - CHECKPOINTS, SO STOPPING STOPS BEING EXPENSIVE.
+"""MODULE 4: CHECKPOINTS, SO STOPPING STOPS BEING EXPENSIVE.
 
 After every completed step, write down the run id, the step number and
 its result. At the start of a run, look for a checkpoint with the same
@@ -7,10 +7,10 @@ every retry throws away the work that already succeeded and pays for it
 again.
 
 Write after every step, not at the end. A checkpoint written at the end
-is a log file. And write it atomically - to a .tmp file, then rename -
-because a half-written checkpoint is worse than none.
+is a log file. And write it atomically: to a .tmp file, then rename;
+a half-written checkpoint is worse than none.
 
-  CHECKPOINTS=on|off     (default on) - off exists so you can measure
+  CHECKPOINTS=on|off     (default on); off exists so you can measure
                          what it saves
 
 Files live in checkpoints/<run-id>.json. In production this is Redis or

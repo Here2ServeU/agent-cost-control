@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""MODULE 6 - DID ROUTING SAVE MONEY, AND DID ANYTHING GET WORSE?
+"""MODULE 6: DID ROUTING SAVE MONEY, AND DID ANYTHING GET WORSE?
 
     python3 compare_runs.py --before baseline --after routed
 

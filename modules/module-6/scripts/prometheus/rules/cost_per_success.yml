@@ -1,4 +1,4 @@
-# MODULE 5 - COST PER SUCCESSFUL TASK, AS A RECORDING RULE AND AN ALERT.
+# MODULE 5: COST PER SUCCESSFUL TASK, AS A RECORDING RULE AND AN ALERT.
 #
 # The recording rule computes the number on a schedule so a dashboard does
 # not recompute it on every refresh. It is the same division as
@@ -21,7 +21,7 @@ groups:
 
       # Alert on the RATIO, not on spend. This is the alert that catches
       # quality problems disguised as cost problems: spend can fall while
-      # this rises. Pick the threshold from your own data - roughly 1.5x
+      # this rises. Pick the threshold from your own data: roughly 1.5x
       # your normal cost per success. $0.20 is 1.5x the course agent's.
       - alert: AgentCostPerSuccessHigh
         expr: agent:cost_per_success_usd:1h > 0.20

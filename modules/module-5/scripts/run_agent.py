@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""MODULE 5 - COST PER SUCCESSFUL TASK.
+"""MODULE 5: COST PER SUCCESSFUL TASK.
 
 The module 4 agent (caps, switch, step limit, loop detection,
 checkpoints), with one change: "it reached a final answer" is replaced
 by the definition written down in SUCCESS.md, checked by success.py.
-The result label now says success or failure - never unknown - and the
+The result label now says success or failure; never unknown; and the
 failures still count on the top of the division.
 
     cat SUCCESS.md

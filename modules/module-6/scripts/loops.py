@@ -1,4 +1,4 @@
-"""MODULE 4 - THE STEP CEILING, AND LOOP DETECTION (THE SIMPLE KIND).
+"""MODULE 4: THE STEP CEILING, AND LOOP DETECTION (THE SIMPLE KIND).
 
 Three ways for an agent to not make progress:
 
@@ -7,7 +7,7 @@ Three ways for an agent to not make progress:
   drifting   never repeats, never finishes
 
 The detector below catches the first two cheaply: it keeps the last few
-tool calls - the name and the argument together as one string - and
+tool calls (the name and the argument together as one string); and
 stops when the agent proposes one it has only just made. Drifting never
 repeats, so the detector cannot see it; the step ceiling underneath
 catches whatever the detector misses.

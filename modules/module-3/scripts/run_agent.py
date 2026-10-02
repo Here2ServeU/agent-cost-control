@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""MODULE 3 - BUDGET CAPS AND KILL SWITCHES.
+"""MODULE 3: BUDGET CAPS AND KILL SWITCHES.
 
 The module 2 agent, with caps and a switch added inside the envelope.
 The agent's own logic is still untouched.

@@ -2,7 +2,7 @@
   "id": "invoice-6630",
   "shape": "converging",
   "seed": 19,
-  "note": "Finishes cleanly, no errors, no loop - and the amount is missing from the answer. 'It did not crash' is not success.",
+  "note": "Finishes cleanly, no errors, no loop; and the amount is missing from the answer. 'It did not crash' is not success.",
   "amount": null,
   "vendor": "Fabrikam Office"
 }

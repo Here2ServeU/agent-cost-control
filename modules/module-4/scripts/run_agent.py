@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""MODULE 4 - LOOPS, RETRIES, AND THE COST OF FAILURE.
+"""MODULE 4: LOOPS, RETRIES, AND THE COST OF FAILURE.
 
 The module 3 agent (caps and switch still on), plus:
 

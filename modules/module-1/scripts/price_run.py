@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""MODULE 1 - CHECK YOUR ARITHMETIC, THEN EXTRAPOLATE YOUR OWN $4,200.
+"""MODULE 1: CHECK YOUR ARITHMETIC, THEN EXTRAPOLATE YOUR OWN $4,200.
 
 Do the sum by hand first. This script is for checking it afterwards,
 and for the extrapolation at the end of the module.

@@ -1,4 +1,4 @@
-"""STEP 1 - INSTRUMENT IT.
+"""STEP 1: INSTRUMENT IT.
 
 Four labels, chosen once, on everything: agent, team, run, result.
 
@@ -71,5 +71,5 @@ class Metrics:
         try:
             push_to_gateway(gw, job="agent", registry=REGISTRY, timeout=2)
             return f"pushed to {gw}"
-        except Exception as e:  # noqa: BLE001 - metrics must never break the agent
+        except Exception as e:  # noqa: BLE001: metrics must never break the agent
             return f"not pushed ({type(e).__name__}); ledger still written"

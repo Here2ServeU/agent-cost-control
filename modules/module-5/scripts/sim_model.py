@@ -1,8 +1,8 @@
 """The model call, simulated.
 
 This course is about controlling what an agent costs, not about spending
-money to learn it. This file answers like a model would - an action to
-take and a usage block saying how many tokens that took - without
+money to learn it. This file answers like a model would: an action to
+take and a usage block saying how many tokens that took; all without
 calling anything. Every script in this folder runs offline, for free,
 and gives the same numbers every time.
 

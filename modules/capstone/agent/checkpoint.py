@@ -1,4 +1,4 @@
-"""STEP 4 - CHECKPOINT, SO A KILL DOES NOT WASTE COMPLETED WORK.
+"""STEP 4: CHECKPOINT, SO A KILL DOES NOT WASTE COMPLETED WORK.
 
 Without this, every safety mechanism you just built has a cost: each
 time a cap fires or a loop is caught, you throw away everything that

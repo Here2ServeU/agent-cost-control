@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""STEP 0 - THE BEFORE PICTURE.
+"""STEP 0: THE BEFORE PICTURE.
 
 This is the agent you start with. It is honest about nothing.
 

@@ -1,7 +1,7 @@
 """The ledger: one line per run, appended, never edited.
 
 Prometheus answers "what is happening right now". The ledger answers
-"what happened, exactly, and what did it cost" - which is the question
+"what happened, exactly, and what did it cost"; that is the question
 you get asked in a meeting three weeks later.
 
 It is a JSONL file. It is boring on purpose.

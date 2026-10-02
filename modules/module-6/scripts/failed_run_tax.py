@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""MODULE 4 - YOUR FAILED-RUN TAX.
+"""MODULE 4: YOUR FAILED-RUN TAX.
 
     python3 failed_run_tax.py --since 30d
 

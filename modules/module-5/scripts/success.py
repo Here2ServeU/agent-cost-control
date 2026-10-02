@@ -1,4 +1,4 @@
-"""MODULE 5 - SUCCESS.md, TURNED INTO A FUNCTION.
+"""MODULE 5: SUCCESS.md, TURNED INTO A FUNCTION.
 
 One place, in code, and printed next to the number every single time.
 A number without its definition is not a measurement; it is a rumour.
